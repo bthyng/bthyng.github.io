@@ -12,7 +12,7 @@
             </div>
             <div class="buttons">
                 <div class="about">
-                    <img src="images/about.png"/>
+                    <a href="about.html"><img src="images/about.png"/></a>
                 </div>
                 <div class="random">
                     <img src="images/random_button.png"/>
@@ -30,7 +30,7 @@
           <!-- this is the template that each behance thing with use to print to the browser -->
           <script id="dbd-item" type="text/template">
             {{#.}}
-            <div class="dbd-item three columns highlight">
+            <div class="dbd-item four columns highlight">
                 <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
                     <img src="images/{{id}}.png" />
                 </a>
@@ -66,7 +66,9 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
 
     <script>
-      $.getJSON('https://sheetlabs.com/BGT/daynotesfeed', function(data) {
+      var projectUrl = 'https://sheetlabs.com/BGT/daynotesfeed';
+
+      $.getJSON(projectUrl, function(data) {
         //mustache for projects
         var template = $('#dbd-item').html();
         var info = Mustache.to_html(template, data);
@@ -76,8 +78,33 @@
             var projectID = $(this).attr('data-project-id');
             var projectArrayNum = projectID - 1;
             console.log(projectArrayNum);
-            var projectUrl = 'https://sheetlabs.com/BGT/daynotesfeed';
-            console.log(projectUrl);
+
+              $.getJSON(projectUrl, function(data) {
+                var template = $('#dbd-page').html();
+                var info = Mustache.to_html(template, data[projectArrayNum]);
+                $('#dynamic-pages').html(info);
+                $('body').addClass('stop-scrolling');
+
+                  $('button.close').click(function() {
+                      $('.animated-thing').hide();
+                      $('body') .removeClass('stop-scrolling');
+                  });
+                  $('.animated-thing').click(function() {
+                      $(this).hide();
+                      $('body') .removeClass('stop-scrolling');
+                  });
+              });
+           });
+
+          $('.random').click(function() {
+            // @return {integer} a random int between min and max
+              function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+              }
+            var projectID = getRandomInt(1,17);
+            console.log(projectID);
+            var projectArrayNum = projectID - 1;
+            console.log(projectArrayNum);
 
               $.getJSON(projectUrl, function(data) {
                 var template = $('#dbd-page').html();

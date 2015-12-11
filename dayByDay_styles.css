@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 
 .buttons {
     position:absolute;
@@ -36,13 +39,24 @@ img { width: 100%;
 }
 
 .container {
-    padding-left: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.clearfix {
+    width: inherit;
+}
+.clearfix::after {
+    clear: both;
+    display: table;
+    content: '';
 }
 
 #header {
     height:75px;
 }
 
+@media (min-width: 800px) {
     .column,
     .columns {
         /*this will make things a column--also having the column/columns allows you to say it either way and it will still work.*/
@@ -80,10 +94,9 @@ img { width: 100%;
     .offset-by-ten    {margin-left: calc(100% / 12 * 10);}
     .offset-by-eleven {margin-left: calc(100% / 12 * 11);}
     .offset-by-twelve {margin-left: calc(100% / 12 * 12);}
+}
 
 .highlight {
-    width: calc(100% / 12 * 03);
-    /* padding: calc(100% / 12 * 03); */
     z-index: 10;
 }
 
@@ -92,13 +105,15 @@ img { width: 100%;
     filter: invert(.8);
 }
 
-
 a {
     font-family: Helvetica;
     color: white;
     font-size: 20px;
-    display:block;
     text-decoration: none;
+}
+
+.dbd-item a {
+    display: block;
 }
 
 #dynamic-pages .animated-thing {
@@ -108,7 +123,7 @@ a {
     bottom:0;
     left:0;
     z-index: 9999;
-    background: rgba(0,0,0,.5);
+    background: dimgrey;
     overflow-y:scroll;
 }
 
@@ -133,3 +148,49 @@ p {
     padding-left: 10%;
     padding-right: 10%;
 }
+
+.about-page p {
+    font-family: Helvetica;
+    font-size: 1.25em;
+    color: dimgrey;
+    margin-left: 10%;
+    margin-right:10%;
+}
+
+.about-page h1 {
+    font-size: 2.25em;
+    font-family: Helvetica;
+    color: dimgrey;
+    margin-left: 20%;
+    margin-bottom:.5em;
+    margin-top:0;
+}
+
+.about-page p:first-of-type {
+    margin-top:0;
+}
+
+li {
+    font-family: Helvetica;
+    font-size: 1.25em;
+    color: dimgrey;
+    margin-left: 22%;
+    margin-right:10%;
+}
+
+@media (min-width:800px) {
+    .about-page p {
+    font-size: 2.5em;
+}
+    .about-page h1 {
+    font-size: 4em;
+    margin-bottom:.125em;
+    margin-top:0;
+}
+
+    li {
+    font-size: 2.5em;
+}
+
+}
+

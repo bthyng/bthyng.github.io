@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html>
+  <head>
+      <title>DayByDay.</title>
+       <link href="dayByDay_styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <div id= "header">
+            <div class="title"><img src="images/day_by_day.png"/>
+            </div>
+            <div class="buttons">
+                <div class="about">
+                    <img src="images/about.png"/>
+                </div>
+                <div class="random">
+                    <img src="images/random_button.png"/>
+                </div>
+            </div>
+        </div>
+
+
+   <main>
+      <div class="container">
+        <div id="dbd-magix" class="clearfix">
+          <!-- insert some HTML via magic JS -->
+            <p>This is a good place to put junk so if something breaks this stuff still shows up. But if it is working the real stuff will print over it. So this junk is always there, stuff just gets put over it.</p>
+
+          <!-- this is the template that each behance thing with use to print to the browser -->
+          <script id="dbd-item" type="text/template">
+            {{#.}}
+            <div class="dbd-item three columns highlight">
+                <a class="wrapping" href="#{{id}}" data-project-id="{{id}}">
+                    <img src="images/{{id}}.png" />
+                </a>
+            </div>
+            {{/.}}
+          </script>
+        </div>
+      </div>
+    </main>
+
+    <div id="dynamic-pages">
+
+    </div>
+
+    <script id="dbd-page" type="text/template">
+        <div  class="animated-thing">
+        <img src="images/{{id}}.gif"/>
+            <p>{{thankfulfor}}</p>
+            <button class="close">X</button>
+        </div>
+    </script>
+    <!-- All your javascript (other than typekit related stuff) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+    <!-- ================================================== -->
+
+    <!-- this is jquery, needed for a bunch of stuff -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- this is mustache, required for the templating to happen -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+
+    <script>
+      $.getJSON('https://sheetlabs.com/BGT/daynotesfeed', function(data) {
+        //mustache for projects
+        var template = $('#dbd-item').html();
+        var info = Mustache.to_html(template, data);
+        $('#dbd-magix').html(info);
+
+          $('.dbd-item a').click(function() {
+            var projectID = $(this).attr('data-project-id');
+            var projectArrayNum = projectID - 1;
+            console.log(projectArrayNum);
+            var projectUrl = 'https://sheetlabs.com/BGT/daynotesfeed';
+            console.log(projectUrl);
+
+              $.getJSON(projectUrl, function(data) {
+                var template = $('#dbd-page').html();
+                var info = Mustache.to_html(template, data[projectArrayNum]);
+                $('#dynamic-pages').html(info);
+                $('body').addClass('stop-scrolling');
+
+                  $('button.close').click(function() {
+                      $('.animated-thing').hide();
+                      $('body') .removeClass('stop-scrolling');
+                  });
+                  $('.animated-thing').click(function() {
+                      $(this).hide();
+                      $('body') .removeClass('stop-scrolling');
+                  });
+              });
+           });
+      });
+    </script>
+
+
+    </body>
+
+</html>

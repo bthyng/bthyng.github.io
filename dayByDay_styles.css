@@ -1,0 +1,128 @@
+.random {
+    position:absolute;
+    top: 20px;
+    right: 15%;
+    height: 50px;
+    width: 40px;
+}
+
+.about {
+    position:absolute;
+    top: 20px;
+    right: 20%;
+    height: 50px;
+    width: 25px;
+}
+
+img { width: 100%;
+    z-index: 2;
+}
+
+.title {
+    font-family: Helvetica;
+    font-size: 3.5em;
+    position:absolute;
+    left:15%;
+    color:rgba(84,84,84,1);
+    width: 100px;
+
+}
+
+.container {
+    padding-left: 10%;
+}
+
+#header {
+    height:75px;
+}
+
+    .column,
+    .columns {
+        /*this will make things a column--also having the column/columns allows you to say it either way and it will still work.*/
+        float: left;
+        padding-left: 1em;
+        padding-right: 1em;
+
+    /*make this half of what you want your gutters to be*/
+    }
+
+    /* these styles declare column widths*/
+    .one    {width: calc(100% / 12 * 01);}
+    .two    {width: calc(100% / 12 * 02);}
+    .three  {width: calc(100% / 12 * 03);}
+    .four   {width: calc(100% / 12 * 04);}
+    .five   {width: calc(100% / 12 * 05);}
+    .six    {width: calc(100% / 12 * 06);}
+    .seven  {width: calc(100% / 12 * 07);}
+    .eight  {width: calc(100% / 12 * 08);}
+    .nine   {width: calc(100% / 12 * 09);}
+    .ten    {width: calc(100% / 12 * 10);}
+    .eleven {width: calc(100% / 12 * 11);}
+    .twelve {width: calc(100% / 12 * 12);}
+
+    /* these styles declare column offests*/
+    .offset-by-one    {margin-left: calc(100% / 12 * 01);}
+    .offset-by-two    {margin-left: calc(100% / 12 * 02);}
+    .offset-by-three  {margin-left: calc(100% / 12 * 03);}
+    .offset-by-four   {margin-left: calc(100% / 12 * 04);}
+    .offset-by-five   {margin-left: calc(100% / 12 * 05);}
+    .offset-by-six    {margin-left: calc(100% / 12 * 06);}
+    .offset-by-seven  {margin-left: calc(100% / 12 * 07);}
+    .offset-by-eight  {margin-left: calc(100% / 12 * 08);}
+    .offset-by-nine   {margin-left: calc(100% / 12 * 09);}
+    .offset-by-ten    {margin-left: calc(100% / 12 * 10);}
+    .offset-by-eleven {margin-left: calc(100% / 12 * 11);}
+    .offset-by-twelve {margin-left: calc(100% / 12 * 12);}
+
+.highlight {
+    width: calc(100% / 12 * 03);
+    /* padding: calc(100% / 12 * 03); */
+    z-index: 10;
+}
+
+.highlight:hover img {
+    -webkit-filter: invert(.8);
+    filter: invert(.8);
+}
+
+
+a {
+    font-family: Helvetica;
+    color: white;
+    font-size: 20px;
+    display:block;
+    text-decoration: none;
+}
+
+#dynamic-pages .animated-thing {
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index: 9999;
+    background: rgba(0,0,0,.5);
+    overflow-y:scroll;
+}
+
+/* try to keep body from scrolling in the background */
+.stop-scrolling {
+    height:100%;
+    overflow:hidden;
+}
+
+.animated-thing button.close {
+    position:fixed;
+    top: 2em;
+    right: 2em;
+    background: lightgreen;
+}
+
+p {
+    font-family: Helvetica;
+    color: white;
+    font-size: 20px;
+    font-weight:400;
+    padding-left: 10%;
+    padding-right: 10%;
+}

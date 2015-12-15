@@ -47,9 +47,12 @@
     </div>
 
     <script id="dbd-page" type="text/template">
-        <div  class="animated-thing">
-        <img src="images/{{id}}.gif"/>
+        <div  class="animated-thing" id="dbd{{id}}">
+            <div class="popup">
+            <img src="images/{{id}}.gif"/>
+            <h1>{{humandate}}</h1>
             <p>{{thankfulfor}}</p>
+            </div>
             <button class="close">X</button>
         </div>
     </script>
@@ -76,6 +79,7 @@
         $('#dbd-magix').html(info);
 
           $('.dbd-item a').click(function() {
+            event.preventDefault();
             var projectID = $(this).attr('data-project-id');
             var projectArrayNum = projectID - 1;
             console.log(projectArrayNum);
